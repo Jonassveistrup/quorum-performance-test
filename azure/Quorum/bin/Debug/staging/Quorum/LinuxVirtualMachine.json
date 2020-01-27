@@ -1,0 +1,171 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {
+      "type": "string"
+    },
+    "virtualMachineName": {
+      "type": "string"
+    },
+    "adminUsername": {
+      "type": "string"
+    },
+    "adminPassword": {
+      "type": "secureString"
+    },
+    "virtualMachineRG": {
+      "type": "string"
+    },
+    "lowercaseRG": {
+      "type": "string"
+    },
+    "virtualNetworkName": {
+      "type": "string"
+    },
+    "storageAccountName": {
+      "type": "string"
+    },
+    "subscriptionId": {
+      "type": "string"
+    }
+
+  },
+  "variables": {
+    
+
+    "networkInterfaceName": "[concat(parameters('virtualMachineName'), '-nin')]",
+
+    "networkSecurityGroupName": "[concat(parameters('virtualMachineName'), '-nsg')]",
+    "networkSecurityGroupRules": "default",
+    "subnetName": "default",
+
+    "publicIpAddressName": "[concat(parameters('virtualMachineName'), '-ip')]",
+    "publicIpAddressType": "Dynamic",
+    "publicIpAddressSku": "Basic",
+
+    "osDiskType": "Premium_LRS",
+    "virtualMachineSize": "Standard_D2s_v3",
+
+    "diagnosticsStorageAccountName": "parameters('storageAccountName')",
+    "diagnosticsStorageAccountId": "[concat('/subscriptions/', parameters('subscriptionId'),'/resourceGroups/', parameters('virtualMachineRG'), '/providers/Microsoft.Storage/storageAccounts/', variables('diagnosticsStorageAccountName'))]",
+    "virtualNetworkId": "[concat('/subscriptions/', parameters('subscriptionId'), '/resourceGroups/', parameters('virtualMachineRG'), '/providers/Microsoft.Network/virtualNetworks/', parameters('virtualNetworkName'))]"
+    
+  },
+  "resources": [
+    {
+      "name": "[variables('networkInterfaceName')]",
+      "type": "Microsoft.Network/networkInterfaces",
+      "apiVersion": "2018-10-01",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[concat('Microsoft.Network/networkSecurityGroups/', variables('networkSecurityGroupName'))]",
+        "[concat('Microsoft.Network/publicIpAddresses/', variables('publicIpAddressName'))]"
+      ],
+      "properties": {
+        "ipConfigurations": [
+          {
+            "name": "ipconfig1",
+            "properties": {
+              "subnet": {
+                "id": "[variables('subnetRef')]"
+              },
+              "privateIPAllocationMethod": "Dynamic",
+              "publicIpAddress": {
+                "id": "[resourceId(resourceGroup().name, 'Microsoft.Network/publicIpAddresses', variables('publicIpAddressName'))]"
+              }
+            }
+          }
+        ],
+        "networkSecurityGroup": {
+          "id": "[variables('nsgId')]"
+        }
+      },
+      "tags": {
+        "tagName": "[parameters('virtualMachineName')]"
+      }
+    },
+    {
+      "name": "[variables('networkSecurityGroupName')]",
+      "type": "Microsoft.Network/networkSecurityGroups",
+      "apiVersion": "2019-02-01",
+      "location": "[parameters('location')]",
+      "properties": {
+        "securityRules": "[variables('networkSecurityGroupRules')]"
+      },
+      "tags": {
+        "tagName" : "[parameters('virtualMachineName')]"
+      }
+    },
+    {
+      "name": "[variables('publicIpAddressName')]",
+      "type": "Microsoft.Network/publicIpAddresses",
+      "apiVersion": "2019-02-01",
+      "location": "[parameters('location')]",
+      "properties": {
+        "publicIpAllocationMethod": "[variables('publicIpAddressType')]"
+      },
+      "sku": {
+        "name": "[variables('publicIpAddressSku')]"
+      },
+      "tags": {
+        "tagName": "[parameters('virtualMachineName')]"
+      }
+    },
+    {
+      "name": "[parameters('virtualMachineName')]",
+      "type": "Microsoft.Compute/virtualMachines",
+      "apiVersion": "2019-03-01",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[concat('Microsoft.Network/networkInterfaces/', variables('networkInterfaceName'))]"
+      ],
+      "properties": {
+        "hardwareProfile": {
+          "vmSize": "[variables('virtualMachineSize')]"
+        },
+        "storageProfile": {
+          "osDisk": {
+            "createOption": "fromImage",
+            "managedDisk": {
+              "storageAccountType": "[variables('osDiskType')]"
+            }
+          },
+          "imageReference": {
+            "publisher": "Canonical",
+            "offer": "UbuntuServer",
+            "sku": "18.04-LTS",
+            "version": "latest"
+          }
+        },
+        "networkProfile": {
+          "networkInterfaces": [
+            {
+              "id": "[resourceId('Microsoft.Network/networkInterfaces', variables('networkInterfaceName'))]"
+            }
+          ]
+        },
+        "osProfile": {
+          "computerName": "[parameters('virtualMachineName')]",
+          "adminUsername": "[parameters('adminUsername')]",
+          "adminPassword": "[parameters('adminPassword')]"
+        },
+        "diagnosticsProfile": {
+          "bootDiagnostics": {
+            "enabled": true,
+            "storageUri": "[concat('https://', variables('diagnosticsStorageAccountName'), '.blob.core.windows.net/')]"
+          }
+        }
+      },
+      "tags": {
+        "tagName": "[parameters('virtualMachineName')]"
+      }
+    }
+  ],
+  "outputs": {
+    "adminUsername": {
+      "type": "string",
+      "value": "[parameters('adminUsername')]"
+    }
+  }
+}

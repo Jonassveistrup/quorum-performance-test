@@ -1,0 +1,57 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "value": "ukwest"
+        },
+        "networkInterfaceName": {
+            "value": "node1704"
+        },
+        "networkSecurityGroupName": {
+            "value": "node1-nsg"
+        },
+        "networkSecurityGroupRules": {
+            "value": "null"
+        },
+        "subnetName": {
+            "value": "default"
+        },
+        "virtualNetworkId": {
+            "value": "/subscriptions/a07d6b2b-0e71-44d3-9e8a-da985951616c/resourceGroups/Scalability_Quorum/providers/Microsoft.Network/virtualNetworks/Scalability_Quorumvnet201"
+        },
+        "publicIpAddressName": {
+            "value": "node1-ip"
+        },
+        "publicIpAddressType": {
+            "value": "Dynamic"
+        },
+        "publicIpAddressSku": {
+            "value": "Basic"
+        },
+        "virtualMachineName": {
+            "value": "node1"
+        },
+        "virtualMachineRG": {
+            "value": "Scalability_Quorum"
+        },
+        "osDiskType": {
+            "value": "Premium_LRS"
+        },
+        "virtualMachineSize": {
+            "value": "Standard_D2s_v3"
+        },
+        "adminUsername": {
+            "value": "admin_scalability"
+        },
+        "adminPassword": {
+            "value": null
+        },
+        "diagnosticsStorageAccountName": {
+            "value": "scalabilityquorumdiag247"
+        },
+        "diagnosticsStorageAccountId": {
+            "value": "/subscriptions/a07d6b2b-0e71-44d3-9e8a-da985951616c/resourceGroups/Scalability_Quorum/providers/Microsoft.Storage/storageAccounts/scalabilityquorumdiag247"
+        }
+    }
+}

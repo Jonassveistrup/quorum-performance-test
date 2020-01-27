@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.1.1 r1855137">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="DLT_Scalability" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+      <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
+    </TestPlan>
+    <hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <intProp name="LoopController.loops">-1</intProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">${__P(users,2000)}</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">20</stringProp>
+        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+        <stringProp name="ThreadGroup.duration">${__P(duration,60)}</stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="Variables" enabled="true">
+          <collectionProp name="Arguments.arguments">
+            <elementProp name="functionHash" elementType="Argument">
+              <stringProp name="Argument.name">functionHash</stringProp>
+              <stringProp name="Argument.value">&quot;0x60fe47b1&quot;</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="numberOfNodes" elementType="Argument">
+              <stringProp name="Argument.name">numberOfNodes</stringProp>
+              <stringProp name="Argument.value">28</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="nodeCounter" elementType="Argument">
+              <stringProp name="Argument.name">nodeCounter</stringProp>
+              <stringProp name="Argument.value">0</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+          </collectionProp>
+        </Arguments>
+        <hashTree/>
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <collectionProp name="HeaderManager.headers">
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Content-Type</stringProp>
+              <stringProp name="Header.value">application/json</stringProp>
+            </elementProp>
+          </collectionProp>
+        </HeaderManager>
+        <hashTree/>
+        <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="Creating varibles from ips" enabled="true">
+          <stringProp name="scriptLanguage">groovy</stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="cacheKey">true</stringProp>
+          <stringProp name="script">List&lt;String&gt; lines = new ArrayList&lt;String&gt;();
+List&lt;String&gt; arr = new ArrayList&lt;String&gt;();
+lines.add(&apos;23.102.56.29,0x01d571a8ca3384fb6309080cd76921103a01dc96, 0xee49b48aec2040156cbba45d6cb68541870dab01, 0x60fe47b1&apos;);
+lines.add(&apos;52.143.180.56,0xb39589166e3a08fd318936812813e8a60566baa9, 0xee49b48aec2040156cbba45d6cb68541870dab01, 0x60fe47b1&apos;);
+lines.add(&apos;52.233.172.226,0xac0c3384e061d2280dd9cccfec58b061075c44c0, 0xee49b48aec2040156cbba45d6cb68541870dab01, 0x60fe47b1&apos;);
+lines.add(&apos;51.104.16.79,0xb39aa36eb5ec00a49870bf6cbc9dc340ff9da914, 0xee49b48aec2040156cbba45d6cb68541870dab01, 0x60fe47b1&apos;);
+lines.add(&apos;51.137.158.253,0xf44d98cddb9bc21157b503b4b4f5be45ef0d5a24, 0xee49b48aec2040156cbba45d6cb68541870dab01, 0x60fe47b1&apos;);
+lines.add(&apos;23.102.21.28,0xde31c08fa7f2f4599309081aa1d2303d2c6bd56a, 0xee49b48aec2040156cbba45d6cb68541870dab01, 0x60fe47b1&apos;);
+lines.add(&apos;13.94.136.145,0x321d0ca665ac4b81582162db08bf40d39652d2b4, 0xee49b48aec2040156cbba45d6cb68541870dab01, 0x60fe47b1&apos;);
+lines.add(&apos;40.89.153.206,0x1ed6f76cc15ff527f56004f8fab709412107e15e, 0xee49b48aec2040156cbba45d6cb68541870dab01, 0x60fe47b1&apos;);
+lines.add(&apos;51.104.16.74,0x03e32f9ceaecc5c4b34f7c10ba398b1c09cd6d4d, 0xee49b48aec2040156cbba45d6cb68541870dab01, 0x60fe47b1&apos;);
+lines.add(&apos;51.137.158.225,0x93760495e02b1168d8d0a96fe08cf78f79813eab, 0xee49b48aec2040156cbba45d6cb68541870dab01, 0x60fe47b1&apos;);
+lines.add(&apos;23.102.20.0,0xcac073bf257eb04c138d2dc1094a2a03227fae15, 0xee49b48aec2040156cbba45d6cb68541870dab01, 0x60fe47b1&apos;);
+lines.add(&apos;52.174.188.26,0x784055caa0008257e804ba23a9c7fe9a0c5824e2, 0xee49b48aec2040156cbba45d6cb68541870dab01, 0x60fe47b1&apos;);
+lines.add(&apos;40.89.180.229,0x66936cd8904eb3683a24e43cadc858700e49bde5, 0xee49b48aec2040156cbba45d6cb68541870dab01, 0x60fe47b1&apos;);
+lines.add(&apos;51.104.16.75,0xa2a30cf80095ff1a9c92cdcb71a85edf338d31e4, 0xee49b48aec2040156cbba45d6cb68541870dab01, 0x60fe47b1&apos;);
+lines.add(&apos;51.137.133.42,0x13cecacfb4c8699eb8b9fb98b7050fc2331a17a6, 0xee49b48aec2040156cbba45d6cb68541870dab01, 0x60fe47b1&apos;);
+lines.add(&apos;23.102.20.102,0x5ec6ae6a58e8597eabf1288f853fb669da733f83, 0xee49b48aec2040156cbba45d6cb68541870dab01, 0x60fe47b1&apos;);
+lines.add(&apos;52.233.170.247,0x5e3bc6ae3c55b87c3f27cdf7908584771d264843, 0xee49b48aec2040156cbba45d6cb68541870dab01, 0x60fe47b1&apos;);
+lines.add(&apos;40.89.175.137,0x194585486ccf2ede039807d1313c90052de1d1ea, 0xee49b48aec2040156cbba45d6cb68541870dab01, 0x60fe47b1&apos;);
+lines.add(&apos;51.104.16.72,0x59b44e83372a5c7e709e5e93e2333ae20614afe0, 0xee49b48aec2040156cbba45d6cb68541870dab01, 0x60fe47b1&apos;);
+lines.add(&apos;51.137.153.175,0x476dd28e6d4da888b858c15d34f82fbecdf67d64, 0xee49b48aec2040156cbba45d6cb68541870dab01, 0x60fe47b1&apos;);
+lines.add(&apos;23.102.20.253,0x257109ae526f400c48d936be89811c9a898743cc, 0xee49b48aec2040156cbba45d6cb68541870dab01, 0x60fe47b1&apos;);
+lines.add(&apos;52.232.73.51,0x8e30b7b12a925a3404064598f63f8a83d54063ed, 0xee49b48aec2040156cbba45d6cb68541870dab01, 0x60fe47b1&apos;);
+lines.add(&apos;40.89.150.27,0xcb2dd8850d2fb9ba69d0513bc89cd6c015009054, 0xee49b48aec2040156cbba45d6cb68541870dab01, 0x60fe47b1&apos;);
+lines.add(&apos;51.104.16.80,0xcbbddb49573cf56f9e0cb0dd1a06a050c0079c64, 0xee49b48aec2040156cbba45d6cb68541870dab01, 0x60fe47b1&apos;);
+lines.add(&apos;51.137.158.167,0x0729eb47fb35713f290ce9448d1d866896d1c1d1, 0xee49b48aec2040156cbba45d6cb68541870dab01, 0x60fe47b1&apos;);
+lines.add(&apos;23.102.21.174,0x487bf11328c9a09cd829d8b655dfd453ed4f5b8e, 0xee49b48aec2040156cbba45d6cb68541870dab01, 0x60fe47b1&apos;);
+lines.add(&apos;13.94.150.133,0x552733d385b94f771341c02af693f5774d4209df, 0xee49b48aec2040156cbba45d6cb68541870dab01, 0x60fe47b1&apos;);
+lines.add(&apos;40.89.138.212,0xca9be78c506f855c03181d2dfb45fb9f42c3a7c8, 0xee49b48aec2040156cbba45d6cb68541870dab01, 0x60fe47b1&apos;);
+
+
+lines.eachWithIndex {line, idx -&gt;
+    arr = line.split(&quot;,&quot;);
+
+    vars.put(&quot;nodeIp&quot; + idx, arr[0]);
+    vars.put(&quot;fromAddress&quot; + idx, &apos;&quot;&apos;+arr[1]+&apos;&quot;&apos;);
+    vars.put(&quot;contractAddress&quot;,&apos;&quot;&apos;+ arr[2].toString().replace(&quot; &quot;, &quot;&quot;)+&apos;&quot;&apos;);
+    vars.put(&quot;functionHash&quot;, &apos;&quot;&apos;+arr[3]);
+      
+  //  log.info(vars.get(&quot;nodeIp&quot; + idx) + vars.get(&quot;fromAddress&quot; + idx) + vars.get(&quot;contractAddress&quot;) + vars.get(&quot;functionHash&quot;));
+}
+
+</stringProp>
+        </JSR223PreProcessor>
+        <hashTree/>
+        <WhileController guiclass="WhileControllerGui" testclass="WhileController" testname="While | Increment contract on all nodes" enabled="true">
+          <stringProp name="WhileController.condition">${__javaScript(&quot;${nodeCounter}&quot; != &quot;${numberOfNodes}&quot;,)}</stringProp>
+        </WhileController>
+        <hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="incrementContractStatic" enabled="false">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;eth_sendTransaction&quot;,&quot;params&quot;:[{&quot;from&quot;: ${currentFromAddress}, &quot;to&quot;: ${contractAddress},  &quot;data&quot;: ${functionHash}}],&quot;id&quot;:1}&#xd;
+</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${currentNodeIp}</stringProp>
+            <stringProp name="HTTPSampler.port">22000</stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path"></stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="Increments" enabled="true">
+              <stringProp name="scriptLanguage">groovy</stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="script">def counter = vars.get(&quot;nodeCounter&quot;).toInteger();
+def contractAddress = vars.get(&quot;contractAddress&quot;);
+
+//gets specifc ip from variable and sets that to the currentNodeIp variable to be used in the loop.
+currentNodeIp = vars.get(&quot;nodeIp&quot;+counter);	
+vars.put(&quot;currentNodeIp&quot;, currentNodeIp);
+
+//gets specifc address from variable and sets that to the currentFromAddress variable to be used in the loop.
+currentFromAddress = vars.get(&quot;fromAddress&quot;+counter);	
+vars.put(&quot;currentFromAddress&quot;, currentFromAddress);
+
+//increment counter
+
+counter++;
+vars.put(&quot;nodeCounter&quot;, counter.toString());
+
+//----Log---
+/*
+log.info(&quot;currentNodeIp: &quot; + currentNodeIp );
+log.info(&quot;currentFromAddress: &quot; + currentFromAddress);
+log.info(&quot;contractAddress: &quot; + contractAddress);
+*/
+</stringProp>
+            </JSR223PreProcessor>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="incrementContractDynamic" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;eth_sendTransaction&quot;,&quot;params&quot;:[{&quot;from&quot;: ${currentFromAddress}, &quot;to&quot;: ${contractAddress}, &quot;data&quot;: ${functionHash}} ],&quot;id&quot;:1}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${currentNodeIp}</stringProp>
+            <stringProp name="HTTPSampler.port">22000</stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path"></stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="Increments" enabled="true">
+              <stringProp name="scriptLanguage">groovy</stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="script">def counter = vars.get(&quot;nodeCounter&quot;).toInteger();
+def contractAddress = vars.get(&quot;contractAddress&quot;);
+def functionHash = vars.get(&quot;functionHash&quot;).toString();
+
+//gets specifc ip from variable and sets that to the currentNodeIp variable to be used in the loop.
+currentNodeIp = vars.get(&quot;nodeIp&quot;+counter);	
+vars.put(&quot;currentNodeIp&quot;, currentNodeIp);
+
+//gets specifc address from variable and sets that to the currentFromAddress variable to be used in the loop.
+currentFromAddress = vars.get(&quot;fromAddress&quot;+counter);	
+vars.put(&quot;currentFromAddress&quot;, currentFromAddress.toString().replace(&quot; &quot;, &quot;&quot;));
+
+//sets parameter in function -&gt; 256 byte -&gt; 32 kb
+byte[] b = new byte[256 / 8 + 1]; // 256 bits + 1 byte
+Arrays.fill(b, (byte) 0xFF);      // with all 1&apos;s
+
+b[0] = 0; // except first 8 bits 0&apos;s, so value is positive
+BigInteger bi = new BigInteger(b);
+
+vars.put(&quot;functionHash&quot;, &apos;&quot;&apos;+functionHash.replace(&apos;&quot;&apos;, &quot;&quot;).replace(&quot; &quot;, &quot;&quot;) +bi+&apos;&quot;&apos;)
+log.info(vars.get(&quot;functionHash&quot;));
+
+counter++;
+vars.put(&quot;nodeCounter&quot;, counter.toString());
+log.info(&quot;nodecounter = &quot; + counter.toString());
+
+
+</stringProp>
+            </JSR223PreProcessor>
+            <hashTree/>
+          </hashTree>
+        </hashTree>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>false</time>
+              <latency>false</latency>
+              <timestamp>true</timestamp>
+              <success>false</success>
+              <label>false</label>
+              <code>false</code>
+              <message>false</message>
+              <threadName>false</threadName>
+              <dataType>false</dataType>
+              <encoding>false</encoding>
+              <assertions>false</assertions>
+              <subresults>false</subresults>
+              <responseData>true</responseData>
+              <samplerData>false</samplerData>
+              <xml>true</xml>
+              <fieldNames>false</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+            </value>
+          </objProp>
+          <stringProp name="filename">res.xml</stringProp>
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>

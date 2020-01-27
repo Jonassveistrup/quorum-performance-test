@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.1.1 r1855137">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="DLT_Scalability" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+      <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
+    </TestPlan>
+    <hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <intProp name="LoopController.loops">-1</intProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">${__P(users,1000)}</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+        <stringProp name="ThreadGroup.duration">${__P(duration,60)}</stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="Variables" enabled="true">
+          <collectionProp name="Arguments.arguments">
+            <elementProp name="functionHash" elementType="Argument">
+              <stringProp name="Argument.name">functionHash</stringProp>
+              <stringProp name="Argument.value">&quot;0xb4d07e81&quot;</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="numberOfNodes" elementType="Argument">
+              <stringProp name="Argument.name">numberOfNodes</stringProp>
+              <stringProp name="Argument.value">28</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="nodeCounter" elementType="Argument">
+              <stringProp name="Argument.name">nodeCounter</stringProp>
+              <stringProp name="Argument.value">0</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="contractAddress" elementType="Argument">
+              <stringProp name="Argument.name">contractAddress</stringProp>
+              <stringProp name="Argument.value">&quot;0x6e047524a1e8ac0e309e98e9d5a93925313d3bd8&quot;</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+          </collectionProp>
+        </Arguments>
+        <hashTree/>
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <collectionProp name="HeaderManager.headers">
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Content-Type</stringProp>
+              <stringProp name="Header.value">application/json</stringProp>
+            </elementProp>
+          </collectionProp>
+        </HeaderManager>
+        <hashTree/>
+        <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="Creating varibles from ips" enabled="true">
+          <stringProp name="scriptLanguage">groovy</stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="cacheKey">true</stringProp>
+          <stringProp name="script">List&lt;String&gt; lines = new ArrayList&lt;String&gt;();
+List&lt;String&gt; arr = new ArrayList&lt;String&gt;();
+
+lines.add(&apos;168.63.36.25,0xb173843e98f14fb36bb362212f0eff4a41912b4a&apos;);
+lines.add(&apos;168.63.67.155,0xc52dc2302a72c717cb2e127f08b53b95be056729&apos;);
+lines.add(&apos;168.61.102.124,0x26c458263ca0e59df79f4f5f00f1e350f3653a67&apos;);
+lines.add(&apos;168.61.87.200,0x6a5b665f0bc9dc1ca6447255c39cf0aa2635215d&apos;);
+lines.add(&apos;168.61.100.121,0x39f17f775252485b23408906e944af2dd8e7a66a&apos;);
+lines.add(&apos;168.61.97.247,0x41d2897b43ccecadf9923b75e281c8ea682421ef&apos;);
+lines.add(&apos;51.137.107.133,0xdf8458a310c9fb1f563f5c8b0e3bd9cb47ce5f4c&apos;);
+lines.add(&apos;51.144.32.55,0xb04007dfb7392786777dfba5779927bd0a14b896&apos;);
+lines.add(&apos;51.144.38.49,0x9ad8892cbe96089e9d5223aa78029dfd148c71ee&apos;);
+lines.add(&apos;51.144.110.93,0xbabed8d44c0267493f1db7b7664268b0a4ff0c06&apos;);
+lines.add(&apos;137.117.174.220,0x3dc93f5e522ca2abeae74390636b469a13648f3d&apos;);
+lines.add(&apos;52.136.252.105,0xf67b36731ec32eba4b98552ebbc3a1dae2806761&apos;);
+lines.add(&apos;51.141.118.214,0xa7b9b253577b688826b9c7f25baf54f552ad1eae&apos;);
+lines.add(&apos;51.141.118.195,0xc5dac9ee037d2a5874b09fa6800ef71b37638caf&apos;);
+lines.add(&apos;51.141.114.160,0x4f3e74a5bce4fb5e3e1d4bfae6717c747fd4b0b4&apos;);
+lines.add(&apos;51.141.116.252,0x2da23546d0d4160c7c2e410b52d69cf1e6a8760a&apos;);
+lines.add(&apos;51.141.117.74,0x47b65294f78667aede0022898ea26b45ffce50b2&apos;);
+lines.add(&apos;40.120.41.60,0x4bf85cd59434c13b6fc6b5d3c0012d0f4d768e74&apos;);
+lines.add(&apos;40.120.41.164,0x4df8a3a99220c14a5fafd3ee0729c21d6cc945f3&apos;);
+lines.add(&apos;40.120.41.159,0xa4565914d97510f376aa8aea1e75f74687d03d37&apos;);
+lines.add(&apos;51.140.143.208,0x9e164c682dde1d236b5da47ad5b67cf2d672d17f&apos;);
+lines.add(&apos;40.120.40.150,0xdbd78bd862b3d44b2847a2973b13c3f6a6ee4930&apos;);
+lines.add(&apos;20.188.32.56,0x9316d2f16079f3a45419e9874a9b411311534be3&apos;);
+lines.add(&apos;52.143.156.140,0xe6b2c117531cc597fd765b0f658b7ec1e3072882&apos;);
+lines.add(&apos;40.89.188.60,0xb3f82deca236cf3f97df4bf416c7ee8fd2a4cc4a&apos;);
+lines.add(&apos;40.89.186.100,0x024eda804d020e384b0a36756377ca703902b85e&apos;);
+lines.add(&apos;40.89.186.156,0xeddbb4a1e03523ae2cf902661ea75dba925ef82c&apos;);
+lines.add(&apos;20.188.39.57,0xef445c18b648d2d1b581af10529d65c81743eb06&apos;);
+
+Collections.shuffle(lines, new Random());
+
+lines.eachWithIndex {line, idx -&gt;
+    arr = line.split(&quot;,&quot;);
+
+    vars.put(&quot;nodeIp&quot; + idx, arr[0]);
+    vars.put(&quot;fromAddress&quot; + idx, &apos;&quot;&apos;+arr[1]+&apos;&quot;&apos;);
+    //vars.put(&quot;contractAddress&quot;,&apos;&quot;&apos;+ arr[2].toString().replace(&quot; &quot;, &quot;&quot;)+&apos;&quot;&apos;);
+    //vars.put(&quot;functionHash&quot;, &apos;&quot;&apos;+arr[3]);
+      
+  //  log.info(vars.get(&quot;nodeIp&quot; + idx) + vars.get(&quot;fromAddress&quot; + idx) + vars.get(&quot;contractAddress&quot;) + vars.get(&quot;functionHash&quot;));
+}
+
+</stringProp>
+        </JSR223PreProcessor>
+        <hashTree/>
+        <WhileController guiclass="WhileControllerGui" testclass="WhileController" testname="While | Increment contract on all nodes" enabled="true">
+          <stringProp name="WhileController.condition">${__javaScript(&quot;${nodeCounter}&quot; != &quot;${numberOfNodes}&quot;,)}</stringProp>
+        </WhileController>
+        <hashTree>
+          <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="DataLoader" enabled="true">
+            <stringProp name="delimiter">,</stringProp>
+            <stringProp name="fileEncoding"></stringProp>
+            <stringProp name="filename">opt/Sharedvolume/random_numbers.csv</stringProp>
+            <boolProp name="ignoreFirstLine">false</boolProp>
+            <boolProp name="quotedData">false</boolProp>
+            <boolProp name="recycle">true</boolProp>
+            <stringProp name="shareMode">shareMode.all</stringProp>
+            <boolProp name="stopThread">false</boolProp>
+            <stringProp name="variableNames">datastring</stringProp>
+          </CSVDataSet>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="10 kb raw bytes memory" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;eth_sendTransaction&quot;,&quot;params&quot;:[{&quot;from&quot;: ${currentFromAddress}, &quot;to&quot;: ${contractAddress}, &quot;data&quot;: ${datastring}, &quot;gas&quot;:&quot;0xBEBC200&quot;} ],&quot;id&quot;:1}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${currentNodeIp}</stringProp>
+            <stringProp name="HTTPSampler.port">22000</stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path"></stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="Increments" enabled="true">
+              <stringProp name="scriptLanguage">groovy</stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="script">def counter = vars.get(&quot;nodeCounter&quot;).toInteger();
+def contractAddress = vars.get(&quot;contractAddress&quot;);
+def functionHash = vars.get(&quot;functionHash&quot;).toString();
+
+//gets specifc ip from variable and sets that to the currentNodeIp variable to be used in the loop.
+currentNodeIp = vars.get(&quot;nodeIp&quot;+counter);	
+vars.put(&quot;currentNodeIp&quot;, currentNodeIp);
+
+//gets specifc address from variable and sets that to the currentFromAddress variable to be used in the loop.
+currentFromAddress = vars.get(&quot;fromAddress&quot;+counter);	
+vars.put(&quot;currentFromAddress&quot;, currentFromAddress.toString().replace(&quot; &quot;, &quot;&quot;));
+
+/*
+//sets parameter in function -&gt; 256 byte -&gt; 32 kb
+byte[] b = new byte[256 / 8 + 1]; // 256 bits + 1 byte
+Arrays.fill(b, (byte) 0xFF);      // with all 1&apos;s
+
+b[0] = 0; // except first 8 bits 0&apos;s, so value is positive
+BigInteger bi = new BigInteger(b);
+*/
+
+//Random rnd = new Random();
+
+//def datalist = []
+//new File(&apos;random_numbers.txt&apos;).eachLine{ line -&gt; datalist &lt;&lt; line}
+
+//vars.put(&quot;datastring&quot;, &apos;&quot;&apos;+datalist[rnd.nextInt(datalist.size)]+&apos;&quot;&apos;)
+
+//vars.put(&quot;functionHash&quot;, &apos;&quot;&apos;+functionHash.replace(&apos;&quot;&apos;, &quot;&quot;).replace(&quot; &quot;, &quot;&quot;) +function+&apos;&quot;&apos;)
+//vars.put(&quot;functionHash&quot;, &apos;&quot;&apos;+functionHash.replace(&apos;&quot;&apos;, &quot;&quot;).replace(&quot; &quot;, &quot;&quot;) +largeString+&apos;&quot;&apos;)
+//log.info(vars.get(&quot;functionHash&quot;));
+
+counter++;
+vars.put(&quot;nodeCounter&quot;, counter.toString());
+log.info(&quot;nodecounter = &quot; + counter.toString());
+
+if(counter == 28){
+	
+	vars.put(&quot;nodeCounter&quot;, &quot;0&quot;);
+	log.info(&quot;node counter reset&quot;);
+}
+</stringProp>
+            </JSR223PreProcessor>
+            <hashTree/>
+          </hashTree>
+        </hashTree>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>false</time>
+              <latency>false</latency>
+              <timestamp>true</timestamp>
+              <success>false</success>
+              <label>false</label>
+              <code>false</code>
+              <message>false</message>
+              <threadName>false</threadName>
+              <dataType>false</dataType>
+              <encoding>false</encoding>
+              <assertions>false</assertions>
+              <subresults>false</subresults>
+              <responseData>true</responseData>
+              <samplerData>false</samplerData>
+              <xml>true</xml>
+              <fieldNames>false</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+            </value>
+          </objProp>
+          <stringProp name="filename">res.xml</stringProp>
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>

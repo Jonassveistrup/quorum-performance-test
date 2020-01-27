@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testResults version="1.2">
+<httpSample ts="1572875261129">
+  <responseData class="java.lang.String">{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:1,&quot;result&quot;:true}
+</responseData>
+</httpSample>
+<httpSample ts="1572875262247">
+  <responseData class="java.lang.String">{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:1,&quot;result&quot;:[&quot;0xe3faebf9c1fe8e8497f44ce349108ae7a4ec130c&quot;]}
+</responseData>
+</httpSample>
+<httpSample ts="1572875262294">
+  <responseData class="java.lang.String">{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:1,&quot;result&quot;:true}
+</responseData>
+</httpSample>
+<httpSample ts="1572875263423">
+  <responseData class="java.lang.String">{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:1,&quot;result&quot;:[&quot;0x5dce5c6afc6bcd3586304b102662d543dfade1e3&quot;]}
+</responseData>
+</httpSample>
+<httpSample ts="1572875263484">
+  <responseData class="java.lang.String">{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:1,&quot;result&quot;:true}
+</responseData>
+</httpSample>
+<httpSample ts="1572875264655">
+  <responseData class="java.lang.String">{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:1,&quot;result&quot;:[&quot;0xcfaf966af73e5fa160db4887347b59236b78b82c&quot;]}
+</responseData>
+</httpSample>
+<httpSample ts="1572875264690">
+  <responseData class="java.lang.String">{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:1,&quot;result&quot;:true}
+</responseData>
+</httpSample>
+<httpSample ts="1572875265813">
+  <responseData class="java.lang.String">{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:1,&quot;result&quot;:[&quot;0x20e9df78aaffa922f2a32f67143837445fd68938&quot;]}
+</responseData>
+</httpSample>
+<httpSample ts="1572875265867">
+  <responseData class="java.lang.String">{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:1,&quot;result&quot;:&quot;0xd5098daad22180ce9d683e161abb2a6b93697abc7c8939df8b932bac57b5d0aa&quot;}
+</responseData>
+</httpSample>
+<httpSample ts="1572875266003">
+  <responseData class="java.lang.String">{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:1,&quot;result&quot;:&quot;0xea412f41ba89c364d4f0da8ca99fafe8288c66796d274b179e2c123c747a7ffc&quot;}
+</responseData>
+</httpSample>
+<httpSample ts="1572875266063">
+  <responseData class="java.lang.String">{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:1,&quot;result&quot;:&quot;0xf065df6a831b72c24e823f5c9db432c4646c41653c5f952599cdfed8111d09d8&quot;}
+</responseData>
+</httpSample>
+<httpSample ts="1572875266141">
+  <responseData class="java.lang.String">{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:1,&quot;result&quot;:&quot;0xa4ef2725e578416b04a7dd9721e3834d0a3e78b850628c2d697355cd6a63733e&quot;}
+</responseData>
+</httpSample>
+<httpSample ts="1572875266200">
+  <responseData class="java.lang.String">{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:1,&quot;result&quot;:&quot;0xc74223779dd2f738d0116a96c4939027f99202a369a18d7ff6d48bdc2e8b8afe&quot;}
+</responseData>
+</httpSample>
+<httpSample ts="1572875266335">
+  <responseData class="java.lang.String">{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:1,&quot;result&quot;:&quot;0x3f3e8ff887b20d7b53d8ea815b77f4a3e051887845eb5079764c2cb21017a659&quot;}
+</responseData>
+</httpSample>
+<httpSample ts="1572875266429">
+  <responseData class="java.lang.String">{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:1,&quot;result&quot;:&quot;0x5f55f6499e3d994de597d30bd91244c6c601e48eae6804d11593f5cb7b59ea8f&quot;}
+</responseData>
+</httpSample>
+<httpSample ts="1572875266510">
+  <responseData class="java.lang.String">{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:1,&quot;result&quot;:&quot;0xc4ced02603a321a5d72d6bfacede1bfc0e86571e622fa3f1e5d977982f880737&quot;}
+</responseData>
+</httpSample>
+<httpSample ts="1572875266591">
+  <responseData class="java.lang.String">{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:1,&quot;result&quot;:&quot;0x064b44f0b27279e35da3e7cb067873ea93b5eecddeccce8d9db4f138d625be38&quot;}
+</responseData>
+</httpSample>
+<httpSample ts="1572875266728">
+  <responseData class="java.lang.String">{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:1,&quot;result&quot;:&quot;0xc0c8428570d175b9edaec8910c72aeb339a8c794859e3464577b2be48181f156&quot;}
+</responseData>
+</httpSample>
+<httpSample ts="1572875266795">
+  <responseData class="java.lang.String">{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:1,&quot;result&quot;:&quot;0x6a33cb75c6709682a3e3534e0b6e3901e76b296854850a4400864b66a0c04748&quot;}
+</responseData>
+</httpSample>
+<httpSample ts="1572875266902">
+  <responseData class="java.lang.String">{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:1,&quot;result&quot;:&quot;0xea5abf4affb7a5804b871b4b2511671bf922458ddd724dbed523e40875a7315a&quot;}
+</responseData>
+</httpSample>
+<httpSample ts="1572875267080">
+  <responseData class="java.lang.String">{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:1,&quot;result&quot;:&quot;0x64a2ef0c4b7039a63364b0d4d98e3fd0f3d9b946079e0305de657c02094fed12&quot;}
+</responseData>
+</httpSample>
+<httpSample ts="1572875267326">
+  <responseData class="java.lang.String">{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:1,&quot;result&quot;:&quot;0x328db3837c937793681982c4314d3490c3355be1fdabdf8bc70163a1861c3d0d&quot;}
+</responseData>
+</httpSample>
+<httpSample ts="1572875267487">
+  <responseData class="java.lang.String">{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:1,&quot;result&quot;:&quot;0xf28fe155be50dc34b4bbda5c4afd985ff6993aa9bf146c2aed06a45f35bfbd75&quot;}
+</responseData>
+</httpSample>
+<httpSample ts="1572875267728">
+  <responseData class="java.lang.String">{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:1,&quot;result&quot;:&quot;0x8c0000f9d080e6c70f3bc29cec806e6ac34024b059c7de1adc9667ec754abc94&quot;}
+</responseData>
+</httpSample>
+<httpSample ts="1572875267899">
+  <responseData class="java.lang.String">{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:1,&quot;result&quot;:&quot;0xf165ef70ef23a649b37d0b8bbe6ec688bc6da39ba322203081dca897da9e18d5&quot;}
+</responseData>
+</httpSample>
+<httpSample ts="1572875268124">
+  <responseData class="java.lang.String">{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:1,&quot;result&quot;:&quot;0xe65c097dcf5a8565a66222a92c46f80a010260a7e88d27a8734339a5c7d9d290&quot;}
+</responseData>
+</httpSample>
+<httpSample ts="1572875268283">
+  <responseData class="java.lang.String">{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:1,&quot;result&quot;:&quot;0x498dc5b0c6cb06bd6c99715f573f62511ef1bc47d1805324c721ee331138c023&quot;}
+</responseData>
+</httpSample>
+<httpSample ts="1572875268417">
+  <responseData class="java.lang.String">{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:1,&quot;result&quot;:&quot;0xc1fe4845a30f92359688b80d88054e5543a44f0307ab5ffbd23f086d4f2b2fd1&quot;}
+</responseData>
+</httpSample>
+<httpSample ts="1572875268591">
+  <responseData class="java.lang.String">{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:1,&quot;result&quot;:&quot;0x2ab68947a7782bdf1a59d078cb84d14a99ab3e02de04215116158f75287f6f4a&quot;}
+</responseData>
+</httpSample>
+<httpSample ts="1572875268708">
+  <responseData class="java.lang.String">{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:1,&quot;result&quot;:&quot;0x8f450db2d886d245cc124ee7d35769d1bc157289701466648a8b0e0f34204a94&quot;}
+</responseData>
+</httpSample>
+<httpSample ts="1572875268808">
+  <responseData class="java.lang.String">{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:1,&quot;result&quot;:&quot;0xa31db38cea05734f3b56c25872c6bf9089841db0fd5fefb65c39851c033101c3&quot;}
+</responseData>
+</httpSample>
+<httpSample ts="1572875268897">
+  <responseData class="java.lang.String">{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:1,&quot;result&quot;:&quot;0x88f301a9c9e218971226c740ec74f9a95d4e459593ad749c260181fc49fae464&quot;}
+</responseData>
+</httpSample>
+<httpSample ts="1572875268991">
+  <responseData class="java.lang.String">{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:1,&quot;result&quot;:&quot;0x6ae8973d331ef4644eceb8e01d2b64cd57ca7f7393737382e8ad6b30cd85364d&quot;}
+</responseData>
+</httpSample>
+<httpSample ts="1572875269097">
+  <responseData class="java.lang.String">{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:1,&quot;result&quot;:&quot;0x7804bf8d8abb402a854b5df2309f37ee6ff62c4b984b8843af4b5691712caa53&quot;}
+</responseData>
+</httpSample>
+<httpSample ts="1572875269197">
+  <responseData class="java.lang.String">{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:1,&quot;result&quot;:&quot;0x1ce9f4ff7304f419ecfc490dd38ae5498c173907a0b28426e78061ea2d544d13&quot;}
+</responseData>
+</httpSample>
+<httpSample ts="1572875269274">
+  <responseData class="java.lang.String">{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:1,&quot;result&quot;:&quot;0xbae9340122bd3b14aeeb8ad10702e169663711f3424883d4ccbc777f180afead&quot;}
+</responseData>
+</httpSample>
+<httpSample ts="1572875269384">
+  <responseData class="java.lang.String">{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:1,&quot;result&quot;:&quot;0x34dd91a963676560190c316f5e9450435690fc8813e790960a9a759cd5f2ba7e&quot;}
+</responseData>
+</httpSample>
+<httpSample ts="1572875269471">
+  <responseData class="java.lang.String">{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:1,&quot;result&quot;:&quot;0xa956bdca88ea3dc510266d908e2cece582c099fb48b85b1664e897b3bc769801&quot;}
+</responseData>
+</httpSample>
+<httpSample ts="1572875269536">
+  <responseData class="java.lang.String">{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:1,&quot;result&quot;:&quot;0x1153b6481de3243b279b083e38fe15b49ecbb53da55db4b51f420a3cf41a72f7&quot;}
+</responseData>
+</httpSample>
+<httpSample ts="1572875269646">
+  <responseData class="java.lang.String">{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:1,&quot;result&quot;:&quot;0x990e13f89b580c528b981d7997703ad65acf94695a23cd208448f97251c8c771&quot;}
+</responseData>
+</httpSample>
+<httpSample ts="1572875269733">
+  <responseData class="java.lang.String">{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:1,&quot;result&quot;:&quot;0xecc1b68aa1a0409814a9b73a2d699d3ab24c0ef73809a7e8a2c59c565f52f60e&quot;}
+</responseData>
+</httpSample>
+<httpSample ts="1572875269896">
+  <responseData class="java.lang.String">{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:1,&quot;result&quot;:&quot;0xc47c95d61820ee3e993c2286aa3aa5ed4d8280f1b7806c2de42ac30a18b063a0&quot;}
+</responseData>
+</httpSample>
+<httpSample ts="1572875269962">
+  <responseData class="java.lang.String">{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:1,&quot;result&quot;:&quot;0x46cad9418133157f117e6c404628bfef1d6bb8775f669a4a26ab3b9774a5541e&quot;}
+</responseData>
+</httpSample>
+<httpSample ts="1572875270046">
+  <responseData class="java.lang.String">{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:1,&quot;result&quot;:&quot;0x5601306b56629ba839da80d3b080725a0e7e530cd5ec54e2743aa6db1a6e28f2&quot;}
+</responseData>
+</httpSample>
+<httpSample ts="1572875270132">
+  <responseData class="java.lang.String">{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:1,&quot;result&quot;:&quot;0x266f3b5299fc035aadf949584f4c19024d7a484b8ccc83beb6b99f8ed6ced426&quot;}
+</responseData>
+</httpSample>
+<httpSample ts="1572875270239">
+  <responseData class="java.lang.String">{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:1,&quot;result&quot;:&quot;0x96226981f4c2f0853681fa993ab207b7e20166278c5228a4ec09839adaa81616&quot;}
+</responseData>
+</httpSample>
+<httpSample ts="1572875270338">
+  <responseData class="java.lang.String">{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:1,&quot;result&quot;:&quot;0xbe7ea362e0836a79f496fbff39c891542b5867e4bac3fb00f2c282dad05b02a1&quot;}
+</responseData>
+</httpSample>
+<httpSample ts="1572875270503">
+  <responseData class="java.lang.String">{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:1,&quot;result&quot;:&quot;0x7f2e38dfe5302b8864912bfb9821a0ffefea156dcac9c46175cc43c7f264fc75&quot;}
+</responseData>
+</httpSample>
+
+</testResults>

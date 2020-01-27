@@ -1,0 +1,33 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {
+      "value": "ukwest"
+    },
+    "virtualMachineName": {
+      "value": "node1"
+    },
+    "adminUsername": {
+      "value": "admin_scalability"
+    },
+    "adminPassword": {
+      "value": "Deloitte1234"
+    },
+    "virtualMachineRG": {
+      "value": "Scalability_Quorum"
+    },
+    "lowercaseRG": {
+      "value": "scalabilityquorum"
+    },
+    "virtualNetworkName": {
+      "value": "vnet201"
+    },
+    "storageAccountName": {
+      "value": "diag247"
+    },
+    "subscriptionId": {
+      "value": "a07d6b2b-0e71-44d3-9e8a-da985951616c"
+    }
+  }
+}

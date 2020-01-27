@@ -1,0 +1,29 @@
+Country;Location;VMName;AzLocationName;VirtualNetworkName;StorageAccountName;AddressPrefix;#
+Austria;North Europe;node0-Austria;northeurope;NorthEurope-VN;quorumnortheuropestorage;10.0.0.0/16;0
+Belgium;West Europe;node1-Belgium;westeurope;WestEurope-VN;quorumwesteuropestorage;10.1.0.0/16;1
+Bulgaria;France Central;node2-Bulgaria;francecentral;FranceCentral-VN;quorumfrancestorage;10.2.0.0/16;2
+Croatia;UK South;node3-Croatia;uksouth;UKSouth-VN;quorumuksouthstorage;10.3.0.0/16;3
+Cyprus;UK West;node4-Cyprus;ukwest;UKWest-VN;quorumukweststorage;10.4.0.0/16;4
+Czechia;North Europe;node5-Czechia;northeurope;NorthEurope-VN;quorumnortheuropestorage;10.0.0.0/16;5
+Denmark;West Europe;node6-Denmark;westeurope;WestEurope-VN;quorumwesteuropestorage;10.1.0.0/16;6
+Estonia;France Central;node7-Estonia;francecentral;FranceCentral-VN;quorumfrancestorage;10.2.0.0/16;7
+Finland;UK South;node8-Finland;uksouth;UKSouth-VN;quorumuksouthstorage;10.3.0.0/16;8
+France;UK West;node9-France;ukwest;UKWest-VN;quorumukweststorage;10.4.0.0/16;9
+Germany;North Europe;node10-Germany;northeurope;NorthEurope-VN;quorumnortheuropestorage;10.0.0.0/16;10
+Greece;West Europe;node11-Greece;westeurope;WestEurope-VN;quorumwesteuropestorage;10.1.0.0/16;11
+Hungary;France Central;node12-Hungary;francecentral;FranceCentral-VN;quorumfrancestorage;10.2.0.0/16;12
+Ireland;UK South;node13-Ireland;uksouth;UKSouth-VN;quorumuksouthstorage;10.3.0.0/16;13
+Italy;UK West;node14-Italy;ukwest;UKWest-VN;quorumukweststorage;10.4.0.0/16;14
+Latvia;North Europe;node15-Latvia;northeurope;NorthEurope-VN;quorumnortheuropestorage;10.0.0.0/16;15
+Lithuania;West Europe;node16-Lithuania;westeurope;WestEurope-VN;quorumwesteuropestorage;10.1.0.0/16;16
+Luxembourg;France Central;node17-Luxembourg;francecentral;FranceCentral-VN;quorumfrancestorage;10.2.0.0/16;17
+Malta;UK South;node18-Malta;uksouth;UKSouth-VN;quorumuksouthstorage;10.3.0.0/16;18
+Netherlands;UK West;node19-Netherlands;ukwest;UKWest-VN;quorumukweststorage;10.4.0.0/16;19
+Poland;North Europe;node20-Poland;northeurope;NorthEurope-VN;quorumnortheuropestorage;10.0.0.0/16;20
+Portugal;West Europe;node21-Portugal;westeurope;WestEurope-VN;quorumwesteuropestorage;10.1.0.0/16;21
+Romania;France Central;node22-Romania;francecentral;FranceCentral-VN;quorumfrancestorage;10.2.0.0/16;22
+Slovakia;UK South;node23-Slovakia;uksouth;UKSouth-VN;quorumuksouthstorage;10.3.0.0/16;23
+Slovenia;UK West;node24-Slovenia;ukwest;UKWest-VN;quorumukweststorage;10.4.0.0/16;24
+Spain;North Europe;node25-Spain;northeurope;NorthEurope-VN;quorumnortheuropestorage;10.0.0.0/16;25
+Sweden;West Europe;node26-Sweden;westeurope;WestEurope-VN;quorumwesteuropestorage;10.1.0.0/16;26
+United Kingdom;France Central;node27-United Kingdom;francecentral;FranceCentral-VN;quorumfrancestorage;10.2.0.0/16;27

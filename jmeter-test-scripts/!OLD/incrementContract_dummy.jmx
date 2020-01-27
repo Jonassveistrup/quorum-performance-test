@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.1.1 r1855137">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="DLT_Scalability" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+      <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
+    </TestPlan>
+    <hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <intProp name="LoopController.loops">-1</intProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">${__P(users,1000)}</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">20</stringProp>
+        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+        <stringProp name="ThreadGroup.duration">${__P(duration,60)}</stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="Variables" enabled="true">
+          <collectionProp name="Arguments.arguments">
+            <elementProp name="functionHash" elementType="Argument">
+              <stringProp name="Argument.name">functionHash</stringProp>
+              <stringProp name="Argument.value">&quot;0xd09de08a&quot;</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="numberOfNodes" elementType="Argument">
+              <stringProp name="Argument.name">numberOfNodes</stringProp>
+              <stringProp name="Argument.value">100000</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="nodeCounter" elementType="Argument">
+              <stringProp name="Argument.name">nodeCounter</stringProp>
+              <stringProp name="Argument.value">0</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="nodeCounter1" elementType="Argument">
+              <stringProp name="Argument.name">nodeCounter1</stringProp>
+              <stringProp name="Argument.value">0</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="contractAddressMined" elementType="Argument">
+              <stringProp name="Argument.name">contractAddressMined</stringProp>
+              <stringProp name="Argument.value">0</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="nodeIpList" elementType="Argument">
+              <stringProp name="Argument.name">nodeIpList</stringProp>
+              <stringProp name="Argument.value">&quot;/opt/apache-jmeter-5.1.1/bin/nodelist.csv&quot;</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+          </collectionProp>
+        </Arguments>
+        <hashTree/>
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <collectionProp name="HeaderManager.headers">
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Content-Type</stringProp>
+              <stringProp name="Header.value">application/json</stringProp>
+            </elementProp>
+          </collectionProp>
+        </HeaderManager>
+        <hashTree/>
+        <OnceOnlyController guiclass="OnceOnlyControllerGui" testclass="OnceOnlyController" testname="Once Only Controller" enabled="false"/>
+        <hashTree>
+          <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="Creates nodeIp variables" enabled="false">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="script">/*
+def path = vars.get(&quot;nodeIpList&quot;);
+def csvfile = new File(&quot;nodeList.csv&quot;);
+def lines =csvfile.readLines();
+lines.eachWithIndex {line, idx -&gt;
+    vars.put(&quot;nodeIp&quot; + idx, line);
+    //log.info(&quot;nodeIp&quot;+idx + &quot;: &quot; + vars.get(&quot;nodeIp&quot;+ idx));
+}
+*/
+
+//List&lt;String&gt; nodeIps = new ArrayList&lt;String&gt;();
+def nopeIps = [&quot;52.169.147.128&quot;, &quot;51.145.132.236&quot;, &quot;40.89.153.190&quot;, &quot;51.11.35.212&quot;];
+
+nopeIps.eachWithIndex {line, idx -&gt;
+    vars.put(&quot;nodeIp&quot; + idx, line);
+    //log.info(&quot;nodeIp&quot;+idx + &quot;: &quot; + vars.get(&quot;nodeIp&quot;+ idx));
+}
+</stringProp>
+          </JSR223PreProcessor>
+          <hashTree/>
+          <WhileController guiclass="WhileControllerGui" testclass="WhileController" testname="While | Unlock accounts" enabled="false">
+            <stringProp name="WhileController.condition">${__javaScript(&quot;${nodeCounter}&quot; != &quot;${numberOfNodes}&quot;,)}</stringProp>
+          </WhileController>
+          <hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="get address" enabled="false">
+              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;eth_accounts&quot;,&quot;params&quot;:[],&quot;id&quot;:1}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">${currentNodeIp}</stringProp>
+              <stringProp name="HTTPSampler.port">22000</stringProp>
+              <stringProp name="HTTPSampler.protocol"></stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path"></stringProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="Increments" enabled="true">
+                <stringProp name="scriptLanguage">groovy</stringProp>
+                <stringProp name="parameters"></stringProp>
+                <stringProp name="filename"></stringProp>
+                <stringProp name="cacheKey">true</stringProp>
+                <stringProp name="script">def counter = vars.get(&quot;nodeCounter&quot;).toInteger();
+log.info(&quot;nodeCounter val before: &quot; + counter);
+
+def increment;
+def currentNodeIp;
+
+//gets specifc ip from var and sets that to the currentNodeIp variable to be used in the loop.
+currentNodeIp = vars.get(&quot;nodeIp&quot;+counter);	
+vars.put(&quot;currentNodeIp&quot;, currentNodeIp);
+
+//increment counter
+increment = counter + 1;	
+vars.put(&quot;nodeCounter&quot;, increment.toString());
+
+//----Log---
+log.info(&quot;currentNodeIp: &quot; + vars.get(&quot;currentNodeIp&quot;));
+
+
+log.info(&quot;nodeCounter val after: &quot; + increment);</stringProp>
+              </JSR223PreProcessor>
+              <hashTree/>
+              <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Set accountAdress" enabled="true">
+                <stringProp name="JSONPostProcessor.referenceNames">currentFromAddress</stringProp>
+                <stringProp name="JSONPostProcessor.jsonPathExprs">$.result</stringProp>
+                <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              </JSONPostProcessor>
+              <hashTree/>
+              <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="Cleans response from address" enabled="true">
+                <stringProp name="cacheKey">true</stringProp>
+                <stringProp name="filename"></stringProp>
+                <stringProp name="parameters"></stringProp>
+                <stringProp name="script">def currentFromAddress = vars.get(&quot;currentFromAddress&quot;);
+def cleanedAddress = currentFromAddress.replace(&quot;[&quot;,&quot;&quot;).replace(&quot;]&quot;,&quot;&quot;);
+def counter = Integer.parseInt(vars.get(&quot;nodeCounter&quot;))-1;
+
+
+log.info(&quot;increment: &quot; + counter.toString());
+vars.put(&quot;currentFromAddress&quot;, cleanedAddress);
+
+//creates new address variable
+vars.put(&quot;fromAddress&quot;+counter.toString(), cleanedAddress);
+log.info(&quot;New var -&gt; fromAddress&quot; + counter.toString() + &quot;: &quot; + vars.get(&quot;currentFromAddress&quot;));
+log.info(&quot;currentFromAddress: &quot; + vars.get(&quot;currentFromAddress&quot;));
+</stringProp>
+                <stringProp name="scriptLanguage">groovy</stringProp>
+              </JSR223PostProcessor>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="unlock account" enabled="false">
+              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;personal_unlockAccount&quot;,&quot;params&quot;:[${currentFromAddress}, &quot;Deloitte&quot;, 0],&quot;id&quot;:1}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">${currentNodeIp}</stringProp>
+              <stringProp name="HTTPSampler.port">22000</stringProp>
+              <stringProp name="HTTPSampler.protocol"></stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path"></stringProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="createContract" enabled="false">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;eth_sendTransaction&quot;,&quot;params&quot;:[{&quot;from&quot;: ${currentFromAddress}, &quot;data&quot;: &quot;0x60806040526000805534801561001457600080fd5b5060c2806100236000396000f3fe6080604052348015600f57600080fd5b5060043610603c5760003560e01c80638ada066e146041578063d09de08a14605d578063d826f88f146065575b600080fd5b6047606d565b6040518082815260200191505060405180910390f35b60636076565b005b606b6084565b005b60008054905090565b600160005401600081905550565b6000808190555056fea265627a7a72315820199263a8d592f2dfb99a76d5995f184b8b41fe42ff4b9cb5441d716688fa4b4b64736f6c634300050b0032&quot;}],&quot;id&quot;:1}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${currentNodeIp}</stringProp>
+            <stringProp name="HTTPSampler.port">22000</stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path"></stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Set contractHash" enabled="false">
+              <stringProp name="JSONPostProcessor.referenceNames">contractHash</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.result</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="Cleans response from hash" enabled="false">
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="script">def contractHash = vars.get(&quot;contractHash&quot;);
+def cleanedHash = contractHash.replace(&apos;[&apos;,&apos;&quot;&apos;).replace(&apos;]&apos;,&apos;&quot;&apos;);
+
+vars.put(&quot;contractHash&quot;, &apos;&quot;&apos;+cleanedHash+&apos;&quot;&apos;);
+log.info(&quot;contractHash: &quot; + vars.get(&quot;contractHash&quot;));
+</stringProp>
+              <stringProp name="scriptLanguage">groovy</stringProp>
+            </JSR223PostProcessor>
+            <hashTree/>
+          </hashTree>
+          <WhileController guiclass="WhileControllerGui" testclass="WhileController" testname="While | waiting for contract address to be mined" enabled="false">
+            <stringProp name="WhileController.condition">${__javaScript(&quot;${contractAddressMined}&quot; != &quot;1&quot;,)}</stringProp>
+          </WhileController>
+          <hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="getContractAddress" enabled="false">
+              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;eth_getTransactionReceipt&quot;,&quot;params&quot;:[${contractHash}],&quot;id&quot;:1}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">${currentNodeIp}</stringProp>
+              <stringProp name="HTTPSampler.port">22000</stringProp>
+              <stringProp name="HTTPSampler.protocol"></stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path"></stringProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Set contractAddress" enabled="true">
+                <stringProp name="JSONPostProcessor.referenceNames">contractAddress</stringProp>
+                <stringProp name="JSONPostProcessor.jsonPathExprs">$.result</stringProp>
+                <stringProp name="JSONPostProcessor.match_numbers">0</stringProp>
+              </JSONPostProcessor>
+              <hashTree/>
+              <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="Cleans response from contract address" enabled="true">
+                <stringProp name="cacheKey">true</stringProp>
+                <stringProp name="filename"></stringProp>
+                <stringProp name="parameters"></stringProp>
+                <stringProp name="script">def contractAddress = vars.get(&quot;contractAddress&quot;);
+contractAddress = contractAddress.toString();
+
+if(contractAddress.length() != 0 ){
+	//creates list of the json response
+	List&lt;String&gt; results = new ArrayList&lt;String&gt;();
+	results = contractAddress.split(&apos;,&apos;);
+	
+	for (String item : results){
+		if(item.contains(&quot;contractAddress&quot;)){
+			//finds contractAddress and cleans line
+			cleanedAddress = item.replace(&apos;&quot;contractAddress&quot;:&apos;, &apos;&apos;).replace(&quot;[&quot;,&quot;&quot;).replace(&quot;]&quot;,&quot;&quot;);
+		}
+	}
+
+	//if contract not mined yet, wait 3 seconds
+	vars.put(&quot;contractAddress&quot;, cleanedAddress);
+	vars.put(&quot;contractAddressMined&quot;, &quot;1&quot;);
+	log.info(&quot;contractAddress: &quot; + vars.get(&quot;contractAddress&quot;));
+}else{
+	//if contract not mined yet, wait 3 seconds
+	sleep(3000);
+}
+
+
+
+</stringProp>
+                <stringProp name="scriptLanguage">groovy</stringProp>
+              </JSR223PostProcessor>
+              <hashTree/>
+            </hashTree>
+          </hashTree>
+        </hashTree>
+        <WhileController guiclass="WhileControllerGui" testclass="WhileController" testname="While | Increment contract on all nodes" enabled="true">
+          <stringProp name="WhileController.condition">${__javaScript(&quot;1&quot; == &quot;1&quot;,)}</stringProp>
+        </WhileController>
+        <hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="incrementContract" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;eth_sendTransaction&quot;,&quot;params&quot;:[{&quot;from&quot;:&quot;0xe4d5ab8f42915155aa9801fa744ad30d4f36e230&quot;, &quot;to&quot;: &quot;0x222dd94826fb4a2b9c73aad608c81d732f06003e&quot;, &quot;data&quot;: &quot;0xb8e010de&quot;}],&quot;id&quot;:1}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">51.11.35.212</stringProp>
+            <stringProp name="HTTPSampler.port">22000</stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path"></stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="Increments" enabled="false">
+              <stringProp name="scriptLanguage">groovy</stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="script">import org.apache.jmeter.services.FileServer;
+
+def counter = vars.get(&quot;nodeCounter1&quot;).toInteger();
+log.info(&quot;nodeCounter val before: &quot; + counter);
+
+def increment;
+def currentNodeIp;
+def currentFromAddress;
+def contractAddress;
+def functionHash;
+
+//gets specifc ip from variable and sets that to the currentNodeIp variable to be used in the loop.
+currentNodeIp = vars.get(&quot;nodeIp&quot;+counter);	
+vars.put(&quot;currentNodeIp&quot;, currentNodeIp);
+
+//gets specifc address from variable and sets that to the currentFromAddress variable to be used in the loop.
+currentFromAddress = vars.get(&quot;fromAddress&quot;+counter);	
+vars.put(&quot;currentFromAddress&quot;, currentFromAddress);
+
+//increment counter
+increment = counter + 1;	
+vars.put(&quot;nodeCounter1&quot;, increment.toString());
+
+currentNodeIp = vars.get(&quot;currentNodeIp&quot;);
+currentFromAddress = vars.get(&quot;currentFromAddress&quot;);
+contractAddress = vars.get(&quot;contractAddress&quot;);
+functionHash = vars.get(&quot;functionHash&quot;);
+
+
+//----Log---
+log.info(&quot;currentNodeIp: &quot; + currentNodeIp );
+log.info(&quot;currentFromAddress: &quot; + currentFromAddress);
+log.info(&quot;contractAddress: &quot; + contractAddress);
+log.info(&quot;nodeCounter val after: &quot; + increment);
+
+//Write to fil
+
+// Open File(s)
+f = new FileOutputStream(FileServer.getFileServer().getBaseDir()+&quot;\\addresses.csv&quot;, true); 
+p = new PrintStream(f); 
+
+// Write data to file 
+p.println( currentNodeIp + &quot;,&quot; + currentFromAddress + &quot;,&quot; + contractAddress + &quot;,&quot; + functionHash);
+
+// Close File(s)
+p.close();
+f.close();
+
+</stringProp>
+            </JSR223PreProcessor>
+            <hashTree/>
+          </hashTree>
+        </hashTree>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>false</time>
+              <latency>false</latency>
+              <timestamp>true</timestamp>
+              <success>false</success>
+              <label>false</label>
+              <code>false</code>
+              <message>false</message>
+              <threadName>false</threadName>
+              <dataType>false</dataType>
+              <encoding>false</encoding>
+              <assertions>false</assertions>
+              <subresults>false</subresults>
+              <responseData>true</responseData>
+              <samplerData>false</samplerData>
+              <xml>true</xml>
+              <fieldNames>false</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+            </value>
+          </objProp>
+          <stringProp name="filename">res.xml</stringProp>
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>

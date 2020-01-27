@@ -1,0 +1,20 @@
+<httpSample ts="1575465142410">
+  <responseData class="java.lang.String">{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:1,&quot;result&quot;:&quot;0x564803368980be825b10755dee891035c1871c1aa136d8c04716d288c121bff2&quot;}
+</responseData>
+</httpSample>
+<httpSample ts="1575465142705">
+  <responseData class="java.lang.String">{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:1,&quot;result&quot;:&quot;0x1419813abb2057c2072daca14a9544d3caf058f9d776099567fc9080e750652d&quot;}
+</responseData>
+</httpSample>
+<httpSample ts="1575465142569">
+  <responseData class="java.lang.String">{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:1,&quot;result&quot;:&quot;0xf2e1f829910a04480d376ab7b1f36d57b97312dbcd8ee55723e510ccb7b5ee76&quot;}
+</responseData>
+</httpSample>
+<httpSample ts="1575465142083">
+  <responseData class="java.lang.String">{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:1,&quot;result&quot;:&quot;0xbf851773d58f780f54ae13013c5f4daa5140b53329d0eeab0b16f852404befa9&quot;}
+</responseData>
+</httpSample>
+<httpSample ts="1575465142525">
+  <responseData class="java.lang.String">{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:1,&quot;result&quot;:&quot;0x902f4467fbfbcf370d691d00e45fe38b45d94b9c52f1ce39b918bc007ebe0566&quot;}
+</responseData>
+</httpSample>

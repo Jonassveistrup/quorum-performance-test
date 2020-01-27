@@ -1,0 +1,6 @@
+﻿Displayname;AzLocationName;VirtualNetworkName;StorageName;AddressPrefix;SubnetAddressPrefix
+North Europe;northeurope;NorthEurope-VN;quorumnortheuropestorage;10.0.0.0/16;10.0.0.0/24;
+West Europe;westeurope;WestEurope-VN;quorumwesteuropestorage;10.1.0.0/16;10.1.0.0/24;
+France Central;francecentral;FranceCentral-VN;quorumfrancestorage;10.2.0.0/16;10.2.0.0/24;
+UK South;uksouth;UKSouth-VN;quorumuksouthstorage;10.3.0.0/16;10.3.0.0/24;
+UK West;ukwest;UKWest-VN;quorumukweststorage;10.4.0.0/16;10.4.0.0/24;

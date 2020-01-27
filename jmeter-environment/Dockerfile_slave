@@ -1,0 +1,7 @@
+# Use my custom base image defined above
+FROM dragoscampean/testrepo:jmetrubase
+
+MAINTAINER Dragos
+
+# Expose port for JMeter Master
+EXPOSE 60000
